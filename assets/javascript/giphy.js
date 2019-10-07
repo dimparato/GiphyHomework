@@ -21,7 +21,7 @@ function processGifs(gifs) {
     }
 }
 function makeBtn(topic) {
-    var gifBtn = $("<button>");
+    var gifBtn = $("<button>", {class: "button"});
   
     gifBtn.attr("topic", topic);
     gifBtn.text(topic);
@@ -31,7 +31,7 @@ $(document).ready(function () {
     $("#addGif").on('click', function (event) {
         event.preventDefault();
 
-        var btnTopic = $("#newTopic").val();
+        var btnTopic = $("#addTopic").val().trim();
         makeBtn(btnTopic);
     })
     $(document).on("click", function (event) {
@@ -39,7 +39,7 @@ $(document).ready(function () {
         var btn = $(event.target);
 
         if ($(btn).attr("topic")) {
-            getGifs($(btnClicked).attr("topic"));
+            getGifs($(btn).attr("topic"));
         }
     })
 });
